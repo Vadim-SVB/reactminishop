@@ -1,13 +1,43 @@
 import {FC} from 'react';
 import logo from '../images/logo.svg';
-import '../styles/App.css';
-import { useForm, SubmitHandler, Controller, FormProvider, useFormContext } from 'react-hook-form';
+// import '../styles/App.css';
+import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import {Button} from '@material-ui/core'
 import LoginAndPassword from '../components/LoginAndPassword'
 import FirstAndLastName from  '../components/FirstAndLastName'
-// import { spawn } from 'child_process';
+
+import styled from 'styled-components';
+import Title from '../components/Title';
+
+
+//style
+const AppWrapper = styled.div`
+  background: linear-gradient(0deg, rgba(62, 82, 109, 0.5), rgb(0, 17, 48, 1));
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  text-align: center;
+  color: aliceblue;
+  `
+
+const AppLogo = styled.img`
+  height: 25vmin;
+  pointer-events: none;
+  animation: App-logo-spin infinite 60s linear;
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+`
+
 interface IFormInputs {
   email:string;
   password:string;
@@ -33,12 +63,11 @@ const App: FC = () => {
     console.log('submit',data)
   }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Login
-        </p>
+    <AppWrapper>
+      <header >
+        <AppLogo src={logo} className="App-logo" alt="logo" />
+        <Title text='Login'/>
+          
         
       <main>
         <FormProvider {...methods}>
@@ -59,7 +88,7 @@ const App: FC = () => {
         
       </main>
       </header>
-    </div>
+    </AppWrapper>
   );
 }
 

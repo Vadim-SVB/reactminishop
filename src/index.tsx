@@ -3,9 +3,21 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './pages/App';
 import reportWebVitals from './reportWebVitals';
+import {createGlobalStyle} from 'styled-components';
+
+//global style
+const Global = createGlobalStyle`
+  * {
+    margin: 0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:consolas;
+  }
+`
 
 ReactDOM.render(
   <React.StrictMode>
+    <Global/>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
